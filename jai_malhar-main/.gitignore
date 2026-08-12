@@ -1,30 +1,34 @@
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-lerna-debug.log*
+# Dependencies
+node_modules/
 
-node_modules
-dist
-dist-ssr
-*.local
+# Production build output
+dist/
 
-.vscode/*
-!.vscode/extensions.json
-.idea
-.DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+# Vite cache
+.vite/
+
+# Local environment files
 .env
-
-# Local environment files and secrets
 .env.*
 !.env.example
 
-# Bolt editor metadata
-.bolt/
+# Logs
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+*.log
+
+# Editor directories and files
+.vscode/
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+
+# OS files
+desktop.ini
+
+# Generated files
+*.local
+.eslintcache
+coverage/

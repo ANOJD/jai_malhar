@@ -1,0 +1,34 @@
+# Workspace-level ignores
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini
+logs
+*.log
+*.tmp
+*.bak
+
+# Build and dependency outputs
+node_modules/
+**/node_modules/
+target/
+**/target/
+/dist
+/dist-
+
+# Local env and secrets
+.env
+.env.*
+!*.env.example
+/config/local-secrets.properties
+
+# Generated IDE files
+*.iml
+*.class
+*.jar
+*.war
+*.ear
+
+# Uploaded files / user content
+uploads/
