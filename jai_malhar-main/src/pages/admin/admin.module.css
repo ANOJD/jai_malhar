@@ -1,0 +1,268 @@
+/* Shared admin page styles — tables, toolbars, headers */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.pageHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.pageTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+}
+
+.pageDesc {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  margin-top: 4px;
+}
+
+/* ===== Toolbar ===== */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.searchWrap {
+  position: relative;
+  flex: 1;
+  min-width: 200px;
+}
+
+.searchIcon {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--color-text-muted);
+  pointer-events: none;
+}
+
+.searchInput {
+  width: 100%;
+  padding: 12px 16px 12px 46px;
+  border: 2px solid var(--color-bg-alt);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+  background: var(--color-surface);
+  transition: all var(--dur-fast) var(--ease-out);
+  outline: none;
+}
+
+.searchInput:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 4px rgba(122, 0, 25, 0.08);
+}
+
+.filterSelect {
+  padding: 12px 18px;
+  border: 2px solid var(--color-bg-alt);
+  border-radius: var(--radius-full);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-medium);
+  color: var(--color-text);
+  background: var(--color-surface);
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--dur-fast) var(--ease-out);
+}
+
+.filterSelect:focus {
+  border-color: var(--color-primary);
+}
+
+/* ===== Table ===== */
+.tableCard {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid rgba(212, 175, 55, 0.08);
+  overflow: hidden;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table th {
+  text-align: left;
+  padding: 16px 20px;
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  background: var(--color-bg-alt);
+  border-bottom: 1px solid var(--color-bg-alt);
+  white-space: nowrap;
+}
+
+.table td {
+  padding: 16px 20px;
+  font-size: var(--fs-sm);
+  color: var(--color-text);
+  border-bottom: 1px solid var(--color-bg-alt);
+}
+
+.table tbody tr {
+  transition: background var(--dur-fast) var(--ease-out);
+}
+
+.table tbody tr:hover {
+  background: var(--color-primary-50);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== Status Badge ===== */
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: var(--radius-full);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-bold);
+  text-transform: capitalize;
+}
+
+.statusPending {
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+}
+
+.statusApproved {
+  background: var(--color-info-bg);
+  color: var(--color-info);
+}
+
+.statusCompleted {
+  background: var(--color-success-bg);
+  color: var(--color-success);
+}
+
+.statusRejected {
+  background: var(--color-error-bg);
+  color: var(--color-error);
+}
+
+.statusCancelled {
+  background: rgba(154, 141, 147, 0.15);
+  color: var(--color-text-muted);
+}
+
+/* ===== Action Buttons ===== */
+.actionBtns {
+  display: flex;
+  gap: 6px;
+}
+
+.actionBtn {
+  width: 34px;
+  height: 34px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-secondary);
+  background: var(--color-bg-alt);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.actionBtn:hover {
+  color: #fff;
+}
+
+/* Base styles for specific action types (visual only) */
+.actionApprove {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-info);
+}
+.actionApprove:hover { background: var(--color-info); }
+
+.actionReject {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-error);
+}
+.actionReject:hover { background: var(--color-error); }
+
+.actionDelete {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-error);
+}
+.actionDelete:hover { background: var(--color-error); }
+
+.actionComplete {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--color-success);
+}
+.actionComplete:hover { background: var(--color-success); }
+
+.actionEdit:hover { background: var(--color-primary); }
+.actionView:hover { background: var(--color-secondary-600); }
+
+/* ===== Empty ===== */
+.emptyState {
+  text-align: center;
+  padding: 60px 20px;
+  color: var(--color-text-muted);
+  font-size: var(--fs-md);
+}
+
+/* ===== Thumbnail ===== */
+.thumb {
+  width: 56px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  object-fit: cover;
+}
+
+.thumbCell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.thumbName {
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 600px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .searchWrap {
+    min-width: 0;
+  }
+}

@@ -1,0 +1,32 @@
+.container {
+  display: inline-flex;
+  gap: 4px;
+}
+
+.starBtn {
+  padding: 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  line-height: 0;
+}
+
+.starBtn:disabled {
+  cursor: default;
+}
+
+.star {
+  color: var(--color-text-muted);
+  transition: all var(--dur-fast) var(--ease-out);
+}
+
+.starBtn:not(:disabled) .star:hover {
+  transform: scale(1.2);
+}
+
+.filled {
+  color: var(--color-secondary);
+  filter: drop-shadow(0 2px 4px rgba(212, 175, 55, 0.4));
+}

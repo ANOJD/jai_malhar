@@ -1,0 +1,63 @@
+.card {
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  transition: box-shadow var(--dur-normal) var(--ease-out);
+  border: 1px solid rgba(212, 175, 55, 0.12);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+}
+
+.iconWrap {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-royal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-secondary);
+  flex-shrink: 0;
+  transition: transform var(--dur-normal) var(--ease-spring);
+}
+
+.card:hover .iconWrap {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+}
+
+.label {
+  font-family: var(--font-display);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+  flex: 1;
+}
+
+.arrow {
+  font-size: var(--fs-lg);
+  color: var(--color-secondary);
+  opacity: 0;
+  transform: translateX(-8px);
+  transition: all var(--dur-normal) var(--ease-out);
+}
+
+.card:hover .arrow {
+  opacity: 1;
+  transform: translateX(0);
+}

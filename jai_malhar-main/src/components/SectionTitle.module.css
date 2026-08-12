@@ -1,0 +1,64 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 48px;
+}
+
+.left {
+  align-items: flex-start;
+}
+
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--font-accent);
+  font-size: var(--fs-md);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-secondary-600);
+}
+
+.lightEyebrow {
+  color: var(--color-secondary-light);
+}
+
+.eyebrowLine {
+  width: 32px;
+  height: 1.5px;
+  background: var(--gradient-gold);
+  border-radius: var(--radius-full);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: clamp(1.85rem, 4vw, 2.75rem);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-tight);
+  text-align: center;
+  max-width: 720px;
+}
+
+.lightTitle {
+  color: var(--color-text-inverse);
+}
+
+.subtitle {
+  font-size: var(--fs-md);
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  text-align: center;
+  line-height: var(--lh-relaxed);
+}
+
+.lightSubtitle {
+  color: rgba(255, 249, 242, 0.8);
+}
+
+.left .title,
+.left .subtitle {
+  text-align: left;
+}

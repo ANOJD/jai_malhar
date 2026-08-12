@@ -1,0 +1,313 @@
+.page {
+  width: 100%;
+}
+
+/* ===== Header ===== */
+.header {
+  position: relative;
+  padding: calc(var(--navbar-height) + 60px) 0 60px;
+  overflow: hidden;
+}
+
+.headerBg {
+  position: absolute;
+  inset: 0;
+  background: var(--gradient-royal);
+  z-index: 0;
+}
+
+.headerBg::before {
+  content: '';
+  position: absolute;
+  bottom: -30%;
+  right: -10%;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(212, 175, 55, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.headerContent {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== Contact Cards ===== */
+.cardsSection {
+  padding: 0;
+  margin-top: -40px;
+  position: relative;
+  z-index: 2;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.contactCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 28px 20px;
+  background: var(--color-surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  text-align: center;
+  transition: all var(--dur-normal) var(--ease-out);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+  animation: fadeInUp 0.5s var(--ease-out) both;
+}
+
+.contactCard:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: rgba(212, 175, 55, 0.3);
+}
+
+.cardIcon {
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-md);
+  background: var(--gradient-royal);
+  color: var(--color-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4px;
+  transition: transform var(--dur-normal) var(--ease-spring);
+}
+
+.contactCard:hover .cardIcon {
+  transform: scale(1.1);
+}
+
+.cardLabel {
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.cardValue {
+  font-family: var(--font-display);
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}
+
+/* ===== Form Section ===== */
+.formSection {
+  padding: 60px 0 80px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 32px;
+}
+
+/* ===== Form Card ===== */
+.formCard {
+  background: var(--color-surface);
+  border-radius: var(--radius-xl);
+  padding: 36px;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(212, 175, 55, 0.1);
+}
+
+.formTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-2xl);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.formDesc {
+  font-size: var(--fs-base);
+  color: var(--color-text-secondary);
+  margin-bottom: 28px;
+}
+
+.successMsg {
+  padding: 14px 18px;
+  background: var(--color-success-bg);
+  color: var(--color-success);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  margin-bottom: 20px;
+  animation: fadeIn 0.3s ease;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: var(--fs-sm);
+  font-weight: var(--fw-semibold);
+  color: var(--color-primary);
+}
+
+.label svg {
+  color: var(--color-secondary);
+}
+
+.input {
+  padding: 14px 18px;
+  border: 2px solid var(--color-bg-alt);
+  border-radius: var(--radius-md);
+  font-size: var(--fs-base);
+  color: var(--color-text);
+  background: var(--color-bg);
+  transition: all var(--dur-fast) var(--ease-out);
+  outline: none;
+  width: 100%;
+}
+
+.input:focus {
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+  box-shadow: 0 0 0 4px rgba(122, 0, 25, 0.08);
+}
+
+.inputError {
+  border-color: var(--color-error);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: var(--font-body);
+}
+
+.errorText {
+  font-size: var(--fs-xs);
+  color: var(--color-error);
+  font-weight: var(--fw-medium);
+}
+
+/* ===== Map Card ===== */
+.mapCard {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.mapPlaceholder {
+  flex: 1;
+  min-height: 280px;
+  background: var(--gradient-royal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.mapPlaceholder::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(0deg, transparent 0%, rgba(212, 175, 55, 0.05) 50%, transparent 100%),
+    repeating-linear-gradient(45deg, transparent 0, transparent 20px, rgba(212, 175, 55, 0.03) 20px, rgba(212, 175, 55, 0.03) 40px);
+}
+
+.mapPinIcon {
+  color: var(--color-secondary);
+  animation: floatY 3s ease-in-out infinite;
+  z-index: 1;
+}
+
+.mapText {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-semibold);
+  color: #fff;
+  z-index: 1;
+}
+
+.mapSubtext {
+  font-size: var(--fs-sm);
+  color: rgba(255, 249, 242, 0.7);
+  max-width: 280px;
+  z-index: 1;
+}
+
+.addressInfo {
+  padding: 24px 28px;
+  background: var(--color-surface);
+}
+
+.addressTitle {
+  font-family: var(--font-display);
+  font-size: var(--fs-lg);
+  font-weight: var(--fw-bold);
+  color: var(--color-primary);
+  margin-bottom: 8px;
+}
+
+.addressText {
+  font-size: var(--fs-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--lh-relaxed);
+  margin-bottom: 8px;
+}
+
+.addressHours {
+  font-size: var(--fs-sm);
+  color: var(--color-secondary-600);
+  font-weight: var(--fw-semibold);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 900px) {
+  .cardsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .cardsGrid {
+    grid-template-columns: 1fr;
+  }
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+  .formCard {
+    padding: 24px;
+  }
+}
