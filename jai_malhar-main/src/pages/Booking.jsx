@@ -32,17 +32,15 @@ import {
 import Button from '../components/Button.jsx';
 import styles from './Booking.module.css';
 
-const isValid24HourTime = (time) => typeof time === 'string' && /^(?:[01]?\d|2[0-3]):[0-5]\d$/.test(time.trim());
-const isValid12HourTime = (time) => typeof time === 'string' && /^(0?[1-9]|1[0-2]):[0-5]\d\s*(AM|PM)$/i.test(time.trim());
+const isValid24HourTime = (time) => /^(?:[01]?\d|2[0-3]):[0-5]\d$/.test(time.trim());
+const isValid12HourTime = (time) => /^(0?[1-9]|1[0-2]):[0-5]\d\s*(AM|PM)$/i.test(time.trim());
 
 const formatTime12Hour = (time) => {
   if (!time) return '—';
-  const normalized = String(time).trim();
+  const normalized = time.trim();
   if (isValid12HourTime(normalized)) {
-    const match = normalized.match(/^(\d{1,2}:\d{2})\s*(AM|PM)$/i);
-    if (!match) return normalized;
-    const [, hhmm, period] = match;
-    return `${hhmm} ${period.toUpperCase()}`;
+    const [input] = normalized.match(/^(\d{1,2}:\d{2})\s*(AM|PM)$/i).slice(1);
+    return normalized.toUpperCase().replace(/\s+/g, ' ');
   }
 
   if (!isValid24HourTime(normalized)) return normalized;
@@ -60,14 +58,14 @@ const formatTime12Hour = (time) => {
 
 const parseTime12Hour = (value) => {
   if (!value) return '';
-  const normalized = String(value).trim().toUpperCase().replace(/\s+/g, ' ');
+  const normalized = value.trim().toUpperCase().replace(/\s+/g, ' ');
   const match = normalized.match(/^(\d{1,2}):(\d{2})\s*(AM|PM)$/);
-  if (!match) return normalized;
+  if (!match) return value;
 
   let [, hours, minutes, period] = match;
   let hour = Number(hours);
   const minute = Number(minutes);
-  if (minute < 0 || minute > 59 || hour < 1 || hour > 12) return normalized;
+  if (minute < 0 || minute > 59 || hour < 1 || hour > 12) return value;
 
   if (period === 'AM') {
     if (hour === 12) hour = 0;
@@ -80,18 +78,16 @@ const parseTime12Hour = (value) => {
 
 const formatTimeInputValue = (time) => {
   if (!time) return '';
-  const normalized = String(time);
-  if (isValid24HourTime(normalized)) return formatTime12Hour(normalized);
-  if (isValid12HourTime(normalized)) return normalized.toUpperCase().replace(/\s+/g, ' ');
-  return normalized;
+  if (isValid24HourTime(time)) return formatTime12Hour(time);
+  if (isValid12HourTime(time)) return time.toUpperCase().replace(/\s+/g, ' ');
+  return time;
 };
 
 const parseTimeInput = (value) => {
   if (!value) return '';
-  const normalized = String(value);
-  if (isValid24HourTime(normalized.trim())) return normalized.trim();
-  if (isValid12HourTime(normalized)) return parseTime12Hour(normalized);
-  return normalized;
+  if (isValid24HourTime(value.trim())) return value.trim();
+  if (isValid12HourTime(value)) return parseTime12Hour(value);
+  return value;
 };
 
 export default function Booking() {
@@ -158,7 +154,7 @@ export default function Booking() {
         customerEmail: bookingDraft.email,
         eventType: bookingDraft.eventType,
         eventDate: bookingDraft.date,
-        eventTime: bookingDraft.time,
+        eventTime: bookingDraft.time.padStart(5, '0'),
         venue: bookingDraft.venue,
         guestCount: Number(bookingDraft.guests),
         specialRequirement: bookingDraft.requirements,
