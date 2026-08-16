@@ -32,8 +32,7 @@ public class CustomerController {
 
         return bookingsByCustomer.entrySet().stream()
                 .map(entry -> toSummary(entry.getKey(), entry.getValue()))
-                .sorted(Comparator.comparing(CustomerSummary::lastBooking,
-                        Comparator.nullsLast(Comparator.reverseOrder())))
+                .sorted(Comparator.comparing(CustomerSummary::lastBooking, Comparator.nullsLast(Comparator.reverseOrder())))
                 .toList();
     }
 

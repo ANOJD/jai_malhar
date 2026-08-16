@@ -5,7 +5,7 @@ import styles from './Chart.module.css';
 // This keeps the bundle small and the visuals on-brand.
 
 export function BarChart({ data, color = 'var(--color-primary)' }) {
-  const max = Math.max(...data.map((d) => d.value));
+  const max = Math.max(...data.map((d) => Number(d.value) || 0), 1);
   const barWidth = 100 / (data.length * 1.5);
 
   return (
@@ -14,6 +14,7 @@ export function BarChart({ data, color = 'var(--color-primary)' }) {
         {data.map((item, i) => (
           <div key={item.label} className={styles.barCol}>
             <motion.div
+              key={item.label || i}
               className={styles.bar}
               initial={{ height: 0 }}
               whileInView={{ height: `${(item.value / max) * 100}%` }}
@@ -32,7 +33,7 @@ export function BarChart({ data, color = 'var(--color-primary)' }) {
 }
 
 export function DonutChart({ data, size = 200 }) {
-  const total = data.reduce((sum, d) => sum + d.value, 0);
+  const total = data.reduce((sum, d) => sum + (Number(d.value) || 0), 0);
   const colors = ['var(--color-primary)', 'var(--color-secondary)', 'var(--color-primary-300)', 'var(--color-text-muted)'];
   let offset = 0;
   const radius = 70;
@@ -43,7 +44,8 @@ export function DonutChart({ data, size = 200 }) {
       <svg width={size} height={size} viewBox="0 0 200 200">
         <circle cx="100" cy="100" r={radius} fill="none" stroke="var(--color-bg-alt)" strokeWidth="28" />
         {data.map((item, i) => {
-          const dash = (item.value / total) * circumference;
+          const value = Number(item.value) || 0;
+          const dash = total > 0 ? ((Number(item.value) || 0) / total) * circumference : 0;
           const segment = (
             <motion.circle
               key={item.name || item.status}
@@ -86,15 +88,22 @@ export function DonutChart({ data, size = 200 }) {
 }
 
 export function LineChart({ data, color = 'var(--color-secondary)' }) {
-  const max = Math.max(...data.map((d) => d.value));
-  const min = Math.min(...data.map((d) => d.value));
+  const values = data.map((d) => Number(d.value) || 0);
+  const max = Math.max(...values, 1);
+  const min = Math.min(...values);
   const range = max - min || 1;
   const width = 100;
   const height = 100;
-  const points = data.map((d, i) => ({
-    x: (i / (data.length - 1)) * width,
-    y: height - ((d.value - min) / range) * (height - 10) - 5,
-  }));
+  const points = data.map((d, i) => {
+    const value = Number(d.value) || 0;
+
+    return {
+      x: data.length === 1
+        ? width / 2
+        : (i / (data.length - 1)) * width,
+      y: height - ((value - min) / range) * (height - 10) - 5,
+    };
+  });
 
   const pathD = points
     .map((p, i) => `${i === 0 ? 'M' : 'L'} ${p.x} ${p.y}`)
@@ -147,9 +156,11 @@ export function LineChart({ data, color = 'var(--color-secondary)' }) {
         ))}
       </svg>
       <div className={styles.lineLabels}>
-        {data.map((d) => (
-          <span key={d.label}>{d.label}</span>
-        ))}
+        {data.map((d, i) => (
+          <span key={d.label || i}>
+            {d.label}
+          </span>
+      ))}
       </div>
     </div>
   );
