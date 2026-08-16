@@ -128,6 +128,7 @@
   display: inline-flex;
 }
 
+.adminLink2,
 .adminLink {
   display: inline-flex;
   align-items: center;
@@ -143,9 +144,13 @@
   transition: all var(--dur-fast) var(--ease-out);
 }
 
+.adminLink2:hover,
 .adminLink:hover {
   background: var(--gradient-royal);
   color: var(--color-secondary);
+}
+.adminLink2 {
+  display: none;
 }
 
 .menuToggle {
@@ -207,6 +212,7 @@
   color: var(--color-text-on-primary);
   border-radius: var(--radius-full);
   font-weight: var(--fw-semibold);
+  
 }
 
 .mobileAdminLink {
@@ -233,6 +239,9 @@
     display: flex;
   }
   .bookBtn {
+    display: none;
+  }
+  .adminLink {
     display: none;
   }
 }

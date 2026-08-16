@@ -60,10 +60,9 @@ export default function Navbar() {
                 {link.label}
               </NavLink>
             ))}
-          </nav>
 
-          <div className={styles.actions}>
-            <LanguageSwitcher />
+
+            {/* <LanguageSwitcher /> */}
             <Button
               variant="gold"
               size="sm"
@@ -72,6 +71,19 @@ export default function Navbar() {
             >
               {t('nav.callNow')}
             </Button>
+            
+            <Link to={ROUTES.ADMIN_LOGIN} className={styles.adminLink2} aria-label={t('nav.adminLogin')}>
+              <Shield size={20} />
+            </Link>
+            
+          </nav>
+
+          <div className={styles.actions}>
+
+
+            <LanguageSwitcher />
+
+            
             <Link to={ROUTES.BOOKING} className={styles.bookBtn}>
               <Button variant="primary" size="sm">
                 {t('nav.bookEvent')}
